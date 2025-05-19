@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Конвертер цветов RGB & HEX</title>
+    <link rel="stylesheet" href="style_converter.css">
+</head>
+<body>
+    <div class="page-container">
+        <h1>Конвертер цветов RGB & HEX</h1>
+
+        <div id="colorPreview">
+            </div>
+
+        <div class="converter-layout">
+            <div class="converter-section">
+                <h2>RGB в HEX</h2>
+                <div class="input-group">
+                    <label for="rgbRed">R:</label>
+                    <input type="number" id="rgbRed" min="0" max="255" placeholder="0-255">
+                </div>
+                <div class="input-group">
+                    <label for="rgbGreen">G:</label>
+                    <input type="number" id="rgbGreen" min="0" max="255" placeholder="0-255">
+                </div>
+                <div class="input-group">
+                    <label for="rgbBlue">B:</label>
+                    <input type="number" id="rgbBlue" min="0" max="255" placeholder="0-255">
+                </div>
+                <div class="input-group">
+                    <label for="hexOutput">HEX:</label>
+                    <input type="text" id="hexOutput" readonly>
+                </div>
+            </div>
+
+            <div class="converter-section">
+                <h2>HEX в RGB</h2>
+                <div class="input-group">
+                    <label for="hexInput">HEX:</label>
+                    <input type="text" id="hexInput" placeholder="#RRGGBB">
+                </div>
+                <div class="input-group">
+                    <label for="rgbOutputRed">R:</label>
+                    <input type="text" id="rgbOutputRed" readonly>
+                </div>
+                <div class="input-group">
+                    <label for="rgbOutputGreen">G:</label>
+                    <input type="text" id="rgbOutputGreen" readonly>
+                </div>
+                <div class="input-group">
+                    <label for="rgbOutputBlue">B:</label>
+                    <input type="text" id="rgbOutputBlue" readonly>
+                </div>
+            </div>
+        </div>
+
+        <p><a href="main_nav.html" class="back-link">На главную</a></p>
+
+    </div>
+    <script src="script_converter.js"></script>
+</body>
+</html>

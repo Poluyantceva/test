@@ -1,0 +1,210 @@
+/* style_spirits.css - Версия с выравниванием текста по верхнему краю изображения */
+body {
+    margin: 0;
+    padding: 20px;
+    padding-bottom: 80px; /* Добавляем нижний отступ */
+    /* Фон */
+    background-image: url('images/mystic_pattern.png'); /* Укажите правильный путь к вашему файлу */
+    background-repeat: repeat; /* Паттерн повторяется */
+    background-size: auto; /* Размер паттерна по умолчанию */
+
+    font-family: 'Merriweather', serif;
+    color: #ecf0f1;
+    display: flex;
+    justify-content: center;
+    /* align-items: flex-start; */
+    min-height: 100vh;
+    box-sizing: border-box;
+    position: relative;
+    overflow-x: hidden;
+    /* Базовый цвет body - очень темный */
+     background-color: #111;
+}
+
+/* Мистический оверлей с темной виньеткой */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.85) 50%, rgba(0, 0, 0, 1) 100%);
+    opacity: 1;
+    z-index: -1;
+}
+
+/* Главный Мистический Эффект */
+body::after {
+     content: "";
+     position: absolute;
+     top: -50%;
+     left: -50%;
+     width: 200%;
+     height: 200%;
+     background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 50%);
+     opacity: 0.7;
+     animation: subtleGlow 20s ease-in-out infinite alternate;
+     z-index: -1;
+     pointer-events: none;
+}
+
+ @keyframes subtleGlow {
+     0% { opacity: 0.5; transform: scale(1) translate(0, 0); }
+     50% { opacity: 0.9; transform: scale(1.2) translate(15%, 8%); }
+     100% { opacity: 0.5; transform: scale(1) translate(-8%, -12%); }
+ }
+
+
+.page-container {
+    max-width: 900px;
+    width: 100%;
+    background-color: rgba(30, 50, 70, 0.6);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+h1, h2, h3 {
+    font-family: 'Cormorant SC', serif;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+}
+
+/* Стили для h1 внутри spirit-text - убираем верхний отступ */
+.spirit-text h1 {
+    font-size: calc(2.5vw + 2vh);
+    margin-top: 0; /* Убираем верхний отступ */
+    margin-bottom: 10px;
+    opacity: 0;
+    animation: fadeInSlow 2.5s ease-out forwards;
+    color: #1abc9c;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.6); /* Повторим тень на всякий случай */
+}
+
+
+@keyframes fadeInSlow {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+h2 {
+    font-size: calc(1.5vw + 1.5vh);
+    margin-top: 0;
+    margin-bottom: 30px;
+    color: #bdc3c7;
+}
+
+h3 {
+     font-size: calc(1.2vw + 1.2vh);
+     margin-top: 20px;
+     margin-bottom: 10px;
+     color: #1abc9c;
+}
+
+
+.spirit-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.spirit-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.7), 0 5px 15px rgba(0, 0, 0, 0.5);
+    transition: box-shadow 0.3s ease;
+}
+
+.spirit-image img:hover {
+     box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.9), 0 8px 20px rgba(0, 0, 0, 0.7);
+}
+
+
+.spirit-text {
+    flex-grow: 1;
+    text-align: left;
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: #ecf0f1;
+    opacity: 0;
+    animation: fadeIn 2s ease-in forwards;
+    animation-delay: 1s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+
+.spirit-text ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.spirit-text ul li {
+    margin-bottom: 8px;
+    color: #bdc3c7;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.back-link {
+     display: inline-block;
+     margin-top: 20px;
+     color: #bdc3c7;
+     text-decoration: none;
+     font-size: 0.9em;
+     opacity: 0.7;
+     transition: opacity 0.3s ease;
+}
+
+.back-link:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+
+/* Медиазапрос для расположения картинки слева, текста справа на широких экранах */
+@media (min-width: 768px) {
+    .spirit-content {
+        flex-direction: row;
+        align-items: flex-start; /* Выравнивание по верхнему краю */
+    }
+
+    .spirit-image {
+        flex: 0 0 auto;
+        margin-right: 30px;
+        max-width: 40%;
+    }
+
+    .spirit-text {
+         text-align: left;
+         /* animation-delay: 0s; */
+    }
+}
+
+/* Медиазапрос для маленьких экранов */
+@media (max-width: 600px) {
+     /* Убраны стили для h1 на маленьких экранах, используем общие стили h1 */
+     h2 {
+        font-size: calc(3vw + 1.5vh);
+     }
+      h3 {
+        font-size: calc(2vw + 1.5vh);
+     }
+     .spirit-text {
+         font-size: 1em;
+     }
+      .spirit-image {
+         margin-right: 0;
+     }
+}

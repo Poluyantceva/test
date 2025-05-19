@@ -1,0 +1,196 @@
+/* style_allies.css */
+body {
+    margin: 0;
+    /* Фоновое изображение */
+    background-image: url('images/allies_image.png'); /* Укажите правильный путь к вашей картинке */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-color: #333; /* Запасной цвет */
+    font-family: 'Montserrat', sans-serif; /* Основной шрифт для текста (подзаголовков, ссылок) */
+    color: #ecf0f1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Мистический оверлей */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 60%, rgba(0,0,0,0.8) 100%); /* Виньетка/темный градиент */
+    opacity: 0.8;
+    z-index: -1;
+}
+
+/* Дополнительный мистический эффект (опционально) - мерцающие точки */
+body::after {
+     content: "";
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.5)"/></svg>'); /* Очень маленькая точка */
+     background-size: 10px 10px; /* Размер ячейки для точек */
+     opacity: 0.1; /* Прозрачность точек */
+     animation: subtleMove 60s linear infinite; /* Медленное движение точек */
+     z-index: -1;
+     pointer-events: none;
+}
+
+ @keyframes subtleMove {
+     0% { background-position: 0 0; }
+     100% { background-position: 100px 100px; } /* Движение на размер ячейки */
+ }
+
+
+.container {
+    max-width: 900px;
+    width: 100%;
+    padding: 20px;
+    background-color: rgba(20, 30, 40, 0.6); /* Более темный и прозрачный фон контейнера */
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+h1, h2 {
+    font-family: 'Cormorant SC', serif; /* Cormorant SC для всех заголовков */
+    color: #bdc3c7;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.6);
+}
+
+h1 {
+    font-size: calc(3vw + 2vh);
+    margin-bottom: 10px;
+    opacity: 0;
+    animation: fadeInSlow 4s ease-in forwards;
+}
+
+@keyframes fadeInSlow {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+h2 {
+    font-size: calc(1.5vw + 1.5vh);
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+
+/* Стиль для основного текста, если он появится на этой странице */
+/* p {
+    font-family: 'Merriweather', serif;
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: #ecf0f1;
+    margin-bottom: 20px;
+} */
+
+.plant-spirit-links {
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+.spirit-link {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: rgba(52, 73, 94, 0.4); /* Более прозрачный фон ссылки */
+    color: #ecf0f1;
+    text-decoration: none;
+    border: 1px solid rgba(236, 240, 241, 0.2); /* Более прозрачная рамка */
+    border-radius: 5px;
+    font-family: 'Merriweather', serif; /* Используем Merriweather для ссылок */
+    font-size: 1.1em;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, transform 0.3s ease; /* Добавим анимацию трансформации */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    min-width: 200px;
+    position: relative; /* Для возможного эффекта свечения при наведении */
+    overflow: hidden; /* Скрываем свечение по краям до наведения */
+}
+
+.spirit-link::before {
+     content: "";
+     position: absolute;
+     top: -50%;
+     left: -50%;
+     width: 200%;
+     height: 200%;
+     background: radial-gradient(circle, rgba(26, 188, 156, 0.4) 0%, rgba(26, 188, 156, 0) 70%); /* Свечение */
+     transition: opacity 0.5s ease, transform 0.5s ease;
+     opacity: 0;
+     transform: scale(0.5);
+     pointer-events: none;
+}
+
+
+.spirit-link:hover {
+    background-color: rgba(26, 188, 156, 0.5); /* Свечение фона при наведении */
+    border-color: #1abc9c;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+    transform: translateY(-3px); /* Легкий подъем при наведении */
+}
+
+ .spirit-link:hover::before {
+     opacity: 1;
+     transform: scale(1);
+ }
+
+
+.back-link {
+     display: inline-block;
+     margin-top: 20px;
+     color: #bdc3c7;
+     text-decoration: none;
+     font-size: 0.9em;
+     opacity: 0.7;
+     transition: opacity 0.3s ease;
+}
+
+.back-link:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+
+/* Медиазапрос для адаптивности */
+@media (min-width: 768px) {
+    .plant-spirit-links {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px 30px;
+    }
+
+    .spirit-link {
+         min-width: 150px;
+         flex-grow: 1;
+         max-width: 250px;
+    }
+}
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: calc(4vw + 2vh);
+    }
+    h2 {
+        font-size: calc(3vw + 1.5vh);
+    }
+     .spirit-link {
+         min-width: auto;
+         width: 80%;
+     }
+}

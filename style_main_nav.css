@@ -1,0 +1,127 @@
+/* style_main_nav.css */
+body {
+    margin: 0;
+    /* Фон с предыдущей главной страницы */
+    background: linear-gradient(45deg, #A0855B, #D2B48C, #A0855B);
+    background-size: 300% 300%;
+    animation: gradientAnimation 15s ease infinite;
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://ngcmshak.ru/uploads/dsn/fe/72/001/1587646418_38-p-besshovnie-foni-dlya-saitov-112.jpg'); /* Укажите правильный путь к вашему фоновому узору */
+    background-size: cover;
+    background-position: center;
+    opacity: 0.8;
+    z-index: -1;
+}
+
+body::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent 45%, rgba(255, 255, 255, 0.4) 50%, transparent 55%);
+    background-size: 200% 200%;
+    animation: lightSweep 5s linear infinite;
+    opacity: 0.8;
+    pointer-events: none;
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes lightSweep {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+.container {
+    width: 100%;
+    max-width: 80vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+h1 {
+    font-size: calc(4vw + 2vh);
+    font-family: 'Krona One', sans-serif; /* Шрифт заголовка Krona One */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    margin-bottom: 1vh;
+    text-transform: none;
+}
+
+h2 {
+    font-size: calc(2vw + 1vh);
+    font-family: 'Montserrat', sans-serif; /* Шрифт подзаголовка Montserrat */
+    opacity: 0;
+    animation: fadeIn 3s ease-in forwards;
+     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 0.8; }
+}
+
+.buttons-container {
+    margin-top: 30px;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.button {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #FFA500;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #FF8C00;
+}
+
+/* Медиазапрос для маленьких экранов */
+@media (max-width: 600px) {
+    h1 {
+        font-size: calc(6vw + 3vh);
+    }
+    h2 {
+        font-size: calc(3vw + 1.5vh);
+    }
+    .button {
+        font-size: 1em;
+        padding: 10px 20px;
+    }
+    .buttons-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
